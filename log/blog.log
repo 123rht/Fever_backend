@@ -1,0 +1,2 @@
+{"level":"INFO","time":"2022-07-16T08:17:15.339+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-16T08:30:15.525+0800","caller":"logger/logger.go:43","msg":"init logger success"}
