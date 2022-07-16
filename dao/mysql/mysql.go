@@ -1,6 +1,7 @@
 package mysql
 
 import (
+	"Fever_backend/models"
 	"Fever_backend/settings"
 	"fmt"
 	"gorm.io/driver/mysql"
@@ -8,6 +9,7 @@ import (
 )
 
 var db *gorm.DB
+var user = models.Users{}
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	//user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
@@ -28,6 +30,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
 	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
 	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
+	db.AutoMigrate(&user)
 
 	return
 }
