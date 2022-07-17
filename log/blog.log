@@ -26,3 +26,10 @@
 {"level":"INFO","time":"2022-07-16T21:19:35.669+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-16T21:30:26.971+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"ERROR","time":"2022-07-16T21:30:51.613+0800","caller":"controller/users.go:17","msg":"invalid params","error":"缺少必填字段role"}
+{"level":"INFO","time":"2022-07-17T20:36:54.774+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T21:54:07.801+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T22:10:35.952+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T22:25:45.053+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T22:32:19.785+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T22:34:34.356+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-17T22:41:45.454+0800","caller":"logger/logger.go:43","msg":"init logger success"}

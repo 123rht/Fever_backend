@@ -10,6 +10,7 @@ import (
 
 var db *gorm.DB
 var user = models.Users{}
+var doctor = models.Doctor{}
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	//user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
@@ -31,6 +32,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
 	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
 	db.AutoMigrate(&user)
+	db.AutoMigrate(&doctor)
 
 	return
 }

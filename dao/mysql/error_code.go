@@ -9,5 +9,5 @@ var (
 	ErrorGenIDFailed   = errors.New("创建用户ID失败")
 	ErrorInvalidID     = errors.New("无效的ID")
 	ErrorQueryFailed   = errors.New("查询数据失败")
-	ErrorInsertFailed  = errors.New("插入数据失败")
+	ErrorInsertFailed  = errors.New("添加医生失败")
 )
