@@ -32,9 +32,13 @@ func SetupRouter() *gin.Engine {
 		//查看所有医生的名单
 		v2.GET("/information_all", doctor.DoctorListHandler)
 		//添加医生
-		v2.POST("add_doc", doctor.AddDoctorHandler)
+		v2.POST("/add_doc", doctor.AddDoctorHandler)
 		//修改医生的信息
-		v2.POST("change_doc", doctor.ChangeDoctorHandler)
+		v2.POST("/change_doc", doctor.ChangeDoctorHandler)
+		//删除医生
+		v2.POST("/delete_doc", doctor.DeleteDoctorHandler)
+		//修改当前医生管理员的信息
+		v2.POST("/update_myself", doctor.UpdateMyMessage)
 	}
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{

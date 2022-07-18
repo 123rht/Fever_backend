@@ -9,8 +9,15 @@ import (
 
 //DoctorListHandler 获取医生名单的处理函数
 func DoctorListHandler(c *gin.Context) {
+	userName, err := getCurrentUserName(c)
+	if err != nil {
+		zap.L().Error("GetCurrentUserName() failed", zap.Error(err))
+		ResponseError(c, CodeNotLogin)
+		return
+	}
+	page, size := getPageInfo(c)
 	//获取数据
-	data, err := logic.GetDoctorList(getPageInfo(c))
+	data, err := logic.GetDoctorList(userName, page, size)
 	if err != nil {
 		zap.L().Error("Logic.GetDoctorList() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)
@@ -40,6 +47,35 @@ func AddDoctorHandler(c *gin.Context) {
 
 //ChangeDoctorHandler 修改医生信息
 func ChangeDoctorHandler(c *gin.Context) {
+	var doctor models.Doctor
+	if err := c.ShouldBindJSON(&doctor); err != nil {
+		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
+		return
+	}
+	err := logic.ChangeDoctorDetail(&doctor)
+	if err != nil {
+		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	ResponseSuccess(c, nil)
+}
+
+//DeleteDoctorHandler 删除医生
+func DeleteDoctorHandler(c *gin.Context) {
+	userName := c.PostForm("username")
+	//2.根据id 获取博客详情
+	err := logic.DeleteDoctorDetail(userName)
+	if err != nil {
+		zap.L().Error("mysql.DeleteDoctorDetail() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	ResponseSuccess(c, nil)
+}
+
+//UpdateMyMessage 修改当前医生管理员的信息
+func UpdateMyMessage(c *gin.Context) {
 	// 获取作者Name，当前请求的UserName
 	userName, err := getCurrentUserName(c)
 	if err != nil {
@@ -52,8 +88,7 @@ func ChangeDoctorHandler(c *gin.Context) {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	//2.根据id 获取博客详情
-	err = logic.ChangeDoctorDetail(userName, &doctor)
+	err = logic.UpdateMyMessage(userName, &doctor)
 	if err != nil {
 		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)
