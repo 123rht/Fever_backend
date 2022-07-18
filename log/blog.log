@@ -63,3 +63,19 @@
 {"level":"ERROR","time":"2022-07-18T18:25:05.204+0800","caller":"doctor/doctor.go:43","msg":"logic.AddDoctor failed","error":"用户名已存在"}
 {"level":"ERROR","time":"2022-07-18T19:57:53.274+0800","caller":"logic/doctor.go:23","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
 {"level":"ERROR","time":"2022-07-18T19:57:53.274+0800","caller":"doctor/doctor.go:43","msg":"logic.AddDoctor failed","error":"用户名已存在"}
+{"level":"INFO","time":"2022-07-18T21:03:33.645+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:26:36.596+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:33:15.599+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:35:02.752+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:37:24.648+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:40:40.443+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:41:44.776+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:42:44.163+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:44:57.272+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:45:12.288+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T21:54:46.335+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T22:19:52.943+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T22:27:11.575+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T22:27:39.382+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T22:30:03.468+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T22:30:38.118+0800","caller":"logger/logger.go:43","msg":"init logger success"}

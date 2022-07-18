@@ -11,6 +11,7 @@ import (
 var db *gorm.DB
 var user = models.Users{}
 var doctor = models.Doctor{}
+var county = models.County{}
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	//user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
@@ -33,6 +34,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
 	db.AutoMigrate(&user)
 	db.AutoMigrate(&doctor)
+	db.AutoMigrate(&county)
 
 	return
 }

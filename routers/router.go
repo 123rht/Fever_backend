@@ -40,6 +40,23 @@ func SetupRouter() *gin.Engine {
 		//修改当前医生管理员的信息
 		v2.POST("/update_myself", doctor.UpdateMyMessage)
 	}
+
+	//医生名单相关接口
+	v3 := r.Group("/county/v1")
+
+	//登录验证token
+	v3.Use(controller.JWTAuthMiddleware())
+	{
+		//查看所有区县的名单
+		v3.GET("/district_all", controller.DistrictListHandler)
+		//修改区县的信息
+		v3.POST("/change_con", controller.ChangeCountyHandler)
+		//删除区县的信息
+		v3.POST("/delete_con", controller.DeleteCountyHandler)
+		//通过区县名查找区县的所有医院
+		v3.POST("/find_con_his", controller.FindCountyHandler)
+
+	}
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"msg": "404",
