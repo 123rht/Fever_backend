@@ -25,3 +25,9 @@ func AddDoctor(doctor *models.Doctor) (err error) {
 	}
 	return
 }
+
+//ChangeDoctorDetailByUserName  修改医生
+func ChangeDoctorDetailByUserName(username string, doctor *models.Doctor) (err error) {
+	db.Table("doctors").Where("username = ?", username).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname})
+	return err
+}

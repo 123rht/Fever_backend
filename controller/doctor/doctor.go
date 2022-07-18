@@ -37,3 +37,27 @@ func AddDoctorHandler(c *gin.Context) {
 	}
 	ResponseSuccess(c, nil)
 }
+
+//ChangeDoctorHandler 修改医生信息
+func ChangeDoctorHandler(c *gin.Context) {
+	// 获取作者Name，当前请求的UserName
+	userName, err := getCurrentUserName(c)
+	if err != nil {
+		zap.L().Error("GetCurrentUserName() failed", zap.Error(err))
+		ResponseError(c, CodeNotLogin)
+		return
+	}
+	var doctor models.Doctor
+	if err := c.ShouldBindJSON(&doctor); err != nil {
+		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
+		return
+	}
+	//2.根据id 获取博客详情
+	err = logic.ChangeDoctorDetail(userName, &doctor)
+	if err != nil {
+		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	ResponseSuccess(c, nil)
+}

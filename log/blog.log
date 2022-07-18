@@ -33,3 +33,7 @@
 {"level":"INFO","time":"2022-07-17T22:32:19.785+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-17T22:34:34.356+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-17T22:41:45.454+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T08:41:09.897+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-18T08:44:32.583+0800","caller":"controller/users.go:17","msg":"invalid params","error":"缺少必填字段role"}
+{"level":"INFO","time":"2022-07-18T08:45:24.484+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-18T08:45:27.523+0800","caller":"controller/users.go:23","msg":"mysql.Login(&u) failed","error":"密码错误"}
