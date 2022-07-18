@@ -30,13 +30,15 @@ func DoctorListHandler(c *gin.Context) {
 //AddDoctorHandler  添加医生
 func AddDoctorHandler(c *gin.Context) {
 	//获取参数
+	var up models.UP
 	var doctor models.Doctor
 	if err := c.ShouldBindJSON(&doctor); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-
-	err := logic.AddDoctor(&doctor)
+	up.UserName = doctor.Username
+	up.Password = doctor.Password
+	err := logic.AddDoctor(&up, &doctor)
 	if err != nil {
 		zap.L().Error("logic.AddDoctor failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)

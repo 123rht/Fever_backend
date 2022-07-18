@@ -18,8 +18,8 @@ func GetDoctorList(username string, page int, size int) (data []*models.Doctor, 
 }
 
 //AddDoctor  添加医生
-func AddDoctor(doctor *models.Doctor) (err error) {
-	if err := mysql.AddDoctor(doctor); err != nil {
+func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
+	if err := mysql.AddDoctor(up, doctor); err != nil {
 		zap.L().Error("mysql.AddDoctor(doctor) failed", zap.Error(err))
 		return err
 	}

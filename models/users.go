@@ -5,6 +5,30 @@ import (
 	"errors"
 )
 
+type UP struct {
+	UserName string `json:"username" db:"username"` // 用户名
+	Password string `json:"password" db:"password"` // 密码
+}
+
+//func (L *UP) UnmarshalJSON(data []byte) (err error) {
+//	required := struct {
+//		UserName string `json:"username" db:"username"`
+//		Password string `json:"password" db:"password"`
+//	}{}
+//	err = json.Unmarshal(data, &required)
+//	if err != nil {
+//		return
+//	} else if len(required.UserName) == 0 {
+//		err = errors.New("缺少必填字段username")
+//	} else if len(required.Password) == 0 {
+//		err = errors.New("缺少必填字段password")
+//	} else {
+//		L.UserName = required.UserName
+//		L.Password = required.Password
+//	}
+//	return
+//}
+
 type Users struct {
 	UserName string `json:"username" db:"username"` // 用户名
 	Role     string `json:"role" db:"role"`         // 用户角色

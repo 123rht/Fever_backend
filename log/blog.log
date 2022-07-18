@@ -52,3 +52,14 @@
 {"level":"ERROR","time":"2022-07-18T10:11:49.264+0800","caller":"logic/doctor.go:23","msg":"mysql.AddDoctor(&post) failed","error":"用户名已存在"}
 {"level":"ERROR","time":"2022-07-18T10:11:49.264+0800","caller":"doctor/doctor.go:41","msg":"logic.AddDoctor failed","error":"用户名已存在"}
 {"level":"INFO","time":"2022-07-18T10:20:23.857+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T11:24:38.417+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T11:26:53.269+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T11:30:03.632+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T18:04:58.010+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T18:08:39.328+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T18:21:18.726+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-18T18:24:47.811+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-18T18:25:05.204+0800","caller":"logic/doctor.go:23","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
+{"level":"ERROR","time":"2022-07-18T18:25:05.204+0800","caller":"doctor/doctor.go:43","msg":"logic.AddDoctor failed","error":"用户名已存在"}
+{"level":"ERROR","time":"2022-07-18T19:57:53.274+0800","caller":"logic/doctor.go:23","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
+{"level":"ERROR","time":"2022-07-18T19:57:53.274+0800","caller":"doctor/doctor.go:43","msg":"logic.AddDoctor failed","error":"用户名已存在"}

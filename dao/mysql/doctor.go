@@ -14,13 +14,23 @@ func GetDoctorList(username string, page, size int) (doctors []*models.Doctor, e
 }
 
 //AddDoctor 添加医生
-func AddDoctor(doctor *models.Doctor) (err error) {
+func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
 	u := db.Table("doctors").Where("username = ?", doctor.Username).Find(doctor)
 	if u.RowsAffected > 0 {
 		// 用户已存在
 		return ErrorUserExit
 	}
-	// 把博客插入数据库
+	// 生成加密密码
+	password := encryptPassword([]byte(up.Password))
+	db.Table("users").Create(map[string]interface{}{
+		"user_name": up.UserName, "password": password, "role": "医生",
+	})
+	if err != nil {
+		zap.L().Error("add  doctor failed", zap.Error(err))
+		err = ErrorInsertFailed
+		return
+	}
+	// 把医生插入数据库
 	db.Table("doctors").Create(map[string]interface{}{
 		"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "username": doctor.Username, "created_at": time.Now(),
 	})
@@ -41,6 +51,7 @@ func ChangeDoctorDetailByUserName(doctor *models.Doctor) (err error) {
 //DeleteDoctorDetailByUserName 删除医生
 func DeleteDoctorDetailByUserName(username string) (err error) {
 	db.Table("doctors").Where("username = ?", username).Delete(username)
+	db.Table("users").Where("user_name = ?", username).Delete(username)
 	return err
 }
 
