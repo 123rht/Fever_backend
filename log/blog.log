@@ -79,3 +79,22 @@
 {"level":"INFO","time":"2022-07-18T22:27:39.382+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:03.468+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:38.118+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T09:51:29.331+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T09:53:21.725+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:01:51.961+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:09:01.386+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:15:11.234+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:17:03.788+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:18:59.495+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:57:54.809+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:02:13.893+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:04:51.039+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:07:28.828+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:09:53.932+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-19T11:11:25.709+0800","caller":"logic/hospitalAdmin.go:12","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
+{"level":"ERROR","time":"2022-07-19T11:11:25.709+0800","caller":"controller/hospitalAdmin.go:25","msg":"logic.AddDoctor failed","error":"用户名已存在"}
+{"level":"INFO","time":"2022-07-19T11:12:22.803+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:13:46.330+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:14:25.596+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:16:11.972+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:18:12.840+0800","caller":"logger/logger.go:43","msg":"init logger success"}

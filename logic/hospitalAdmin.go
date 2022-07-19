@@ -7,25 +7,17 @@ import (
 )
 
 //创建医院管理
-/*
-func CreateHospitalAdmin(hospitalAdmin *models.HospitalAdmin) (err error) {
-	card, err := snowflake.GetID()
-	if err != nil {
-		zap.L().Error("snowflake.GetID() failed", zap.Error(err))
-		return
-	}
-	hospitalAdmin.Card = card
-	if err := mysql.CreatePost(hospitalAdmin); err != nil {
-		zap.L().Error("mysql.CreatePost(&post) failed", zap.Error(err))
+func AddHospital(up *models.UP, hospital *models.HospitalAdmin) (err error) {
+	if err := mysql.AddHospital(up, hospital); err != nil {
+		zap.L().Error("mysql.AddDoctor(doctor) failed", zap.Error(err))
 		return err
 	}
-
 	return
-}*/
+}
 
 //修改
-func UpdateDetail(card int64, hospitalAdmin *models.HospitalAdmin) error {
-	return mysql.UpdateDetailByCard(card, hospitalAdmin)
+func UpdateDetail(user string, hospitalAdmin *models.Hospital) error {
+	return mysql.UpdateDetailByCard(user, hospitalAdmin)
 }
 
 /*func GetDetail(head string) (*models.HospitalAdmin, error) {

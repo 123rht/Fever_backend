@@ -12,6 +12,7 @@ var db *gorm.DB
 var user = models.Users{}
 var doctor = models.Doctor{}
 var county = models.County{}
+var hospital = models.HospitalAdmin{}
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	//user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
@@ -35,6 +36,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	db.AutoMigrate(&user)
 	db.AutoMigrate(&doctor)
 	db.AutoMigrate(&county)
+	db.AutoMigrate(&hospital)
 
 	return
 }
