@@ -2,7 +2,6 @@ package routers
 
 import (
 	"Fever_backend/controller"
-	"Fever_backend/controller/doctor"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -30,15 +29,15 @@ func SetupRouter() *gin.Engine {
 	v2.Use(controller.JWTAuthMiddleware())
 	{
 		//查看所有医生的名单
-		v2.GET("/information_all", doctor.DoctorListHandler)
+		v2.GET("/information_all", controller.DoctorListHandler)
 		//添加医生
-		v2.POST("/add_doc", doctor.AddDoctorHandler)
+		v2.POST("/add_doc", controller.AddDoctorHandler)
 		//修改医生的信息
-		v2.POST("/change_doc", doctor.ChangeDoctorHandler)
+		v2.POST("/change_doc", controller.ChangeDoctorHandler)
 		//删除医生
-		v2.POST("/delete_doc", doctor.DeleteDoctorHandler)
+		v2.POST("/delete_doc", controller.DeleteDoctorHandler)
 		//修改当前医生管理员的信息
-		v2.POST("/update_myself", doctor.UpdateMyMessage)
+		v2.POST("/update_myself", controller.UpdateMyMessage)
 	}
 
 	//医生名单相关接口

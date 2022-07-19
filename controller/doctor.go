@@ -1,4 +1,4 @@
-package doctor
+package controller
 
 import (
 	"Fever_backend/logic"
