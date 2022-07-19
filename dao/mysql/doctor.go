@@ -43,8 +43,8 @@ func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
 }
 
 //ChangeDoctorDetailByUserName  修改医生
-func ChangeDoctorDetailByUserName(doctor *models.Doctor) (err error) {
-	db.Table("doctors").Where("username = ?", doctor.Username).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "updated_at": time.Now()})
+func ChangeDoctorDetailByUserName(userName string, doctor *models.Doc) (err error) {
+	db.Table("doctors").Where("username = ?", userName).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "updated_at": time.Now()})
 	return err
 }
 

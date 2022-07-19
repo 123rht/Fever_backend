@@ -79,3 +79,5 @@
 {"level":"INFO","time":"2022-07-18T22:27:39.382+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:03.468+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:38.118+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:47:23.893+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:49:32.601+0800","caller":"logger/logger.go:43","msg":"init logger success"}

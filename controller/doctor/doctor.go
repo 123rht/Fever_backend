@@ -49,12 +49,13 @@ func AddDoctorHandler(c *gin.Context) {
 
 //ChangeDoctorHandler 修改医生信息
 func ChangeDoctorHandler(c *gin.Context) {
-	var doctor models.Doctor
+	userName := c.Query("username")
+	var doctor models.Doc
 	if err := c.ShouldBindJSON(&doctor); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	err := logic.ChangeDoctorDetail(&doctor)
+	err := logic.ChangeDoctorDetail(userName, &doctor)
 	if err != nil {
 		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)

@@ -27,8 +27,8 @@ func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
 }
 
 //ChangeDoctorDetail 修改医生信息
-func ChangeDoctorDetail(doctor *models.Doctor) error {
-	return mysql.ChangeDoctorDetailByUserName(doctor)
+func ChangeDoctorDetail(userName string, doctor *models.Doc) error {
+	return mysql.ChangeDoctorDetailByUserName(userName, doctor)
 }
 
 //DeleteDoctorDetail 删除医生
