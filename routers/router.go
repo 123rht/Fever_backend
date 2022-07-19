@@ -14,6 +14,16 @@ func SetupRouter() *gin.Engine {
 	})
 	//登录
 	v1.POST("/login", controller.LoginHandler)
+	//查看所有发热人员的名单
+	v1.GET("/Fare_all", controller.FareListHandler)
+	// 创新新的发热人员信息
+	v1.POST("/addFare", controller.AddMessage)
+	//查询信息
+	v1.GET("/updateFare/:feverId", controller.MsgDetail)
+	//修改信息
+	v1.POST("/updateFare/:feverId", controller.UpdateMessage)
+	//删除信息
+	v1.POST("/deleteFare/:feverId", controller.DeleteMessage)
 
 	//登录验证token
 	v1.Use(controller.JWTAuthMiddleware())

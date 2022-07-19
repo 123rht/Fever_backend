@@ -84,3 +84,7 @@
 {"level":"INFO","time":"2022-07-19T10:54:03.639+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-19T11:30:34.557+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-19T11:35:53.849+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:47:24.889+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-19T11:50:40.825+0800","caller":"logic/FeverMsg.go:22","msg":"mysql.CreatePost(&post) failed","error":"此信息已存在"}
+{"level":"ERROR","time":"2022-07-19T11:53:56.284+0800","caller":"logic/FeverMsg.go:22","msg":"mysql.CreatePost(&post) failed","error":"此信息已存在"}
+{"level":"INFO","time":"2022-07-19T12:12:27.589+0800","caller":"logger/logger.go:43","msg":"init logger success"}
