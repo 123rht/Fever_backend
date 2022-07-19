@@ -70,25 +70,6 @@ func DeleteMessage(c *gin.Context) {
 	ResponseSuccess(c, nil)
 }
 
-//获取信息
-func MsgDetail(c *gin.Context) {
-	//1.获取信息ID
-	idStr := c.Param("feverId") //获取URL参数
-	id, err := strconv.ParseInt(idStr, 10, 64)
-	if err != nil {
-		ResponseError(c, CodeInvalidParams)
-		return
-	}
-	//2.根据id 获取社区详情
-	data, err := logic.GetMsgDetail(id)
-	if err != nil {
-		zap.L().Error("mysql.GetMsgDetail() failed", zap.Error(err))
-		ResponseError(c, CodeServerBusy)
-		return
-	}
-	ResponseSuccess(c, data)
-}
-
 // UpdateMessage修改信息
 func UpdateMessage(c *gin.Context) {
 	//1.获取信息ID

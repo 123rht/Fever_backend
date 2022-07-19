@@ -6,10 +6,19 @@ import (
 	"time"
 )
 
+//GetMyHosDoctorList  获取本医院所有的医生
+func GetMyHosDoctorList(username string, page, size int) (doctors []*models.Doctor, err error) {
+	var hos models.HospitalAdmin
+	db.Table("hospital_admins").Where("user_name = ?", username).Find(&hos)
+	// 查看所有的文章  并分页
+	db.Table("doctors").Where("hospital = ?", hos.Hospital).Limit(size).Offset((page - 1) * size).Find(&doctors)
+	return
+}
+
 //查找所有的医生  并分页
 func GetDoctorList(username string, page, size int) (doctors []*models.Doctor, err error) {
 	// 查看所有的文章  并分页
-	db.Table("doctors").Not("username = ?", username).Limit(size).Offset((page - 1) * size).Find(&doctors)
+	db.Table("doctors").Limit(size).Offset((page - 1) * size).Find(&doctors)
 	return
 }
 
@@ -32,7 +41,7 @@ func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
 	}
 	// 把医生插入数据库
 	db.Table("doctors").Create(map[string]interface{}{
-		"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "username": doctor.Username, "created_at": time.Now(),
+		"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "username": doctor.Username, "created_at": time.Now(), "district": doctor.District,
 	})
 	if err != nil {
 		zap.L().Error("add  doctor failed", zap.Error(err))
@@ -44,7 +53,7 @@ func AddDoctor(up *models.UP, doctor *models.Doctor) (err error) {
 
 //ChangeDoctorDetailByUserName  修改医生
 func ChangeDoctorDetailByUserName(userName string, doctor *models.Doc) (err error) {
-	db.Table("doctors").Where("username = ?", userName).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "updated_at": time.Now()})
+	db.Table("doctors").Where("username = ?", userName).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "district": doctor.District, "updated_at": time.Now()})
 	return err
 }
 
@@ -56,7 +65,15 @@ func DeleteDoctorDetailByUserName(username string) (err error) {
 }
 
 //UpdateMyMessageByUserName 修改医生管理员信息
-func UpdateMyMessageByUserName(username string, doctor *models.Doctor) (err error) {
-	db.Table("doctors").Where("username = ?", username).Updates(map[string]interface{}{"hospital": doctor.Hospital, "id_number": doctor.IDNumber, "phone_number": doctor.PhoneNumber, "realname": doctor.Realname, "updated_at": time.Now()})
+func UpdateMyMessageByUserName(username string, hospitalAdmin *models.HospitalAdmin) (err error) {
+	db.Table("hospital_admins").Where("user_name = ?", username).Updates(map[string]interface{}{
+		"district": hospitalAdmin.District,
+		"hospital": hospitalAdmin.Hospital,
+		"credit":   hospitalAdmin.Credit,
+		"address":  hospitalAdmin.Address,
+		"head":     hospitalAdmin.Head,
+		"phone":    hospitalAdmin.Phone,
+		"id":       hospitalAdmin.ID,
+	})
 	return err
 }

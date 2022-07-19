@@ -68,13 +68,6 @@ func GetFareList(page, size int) (posts []*models.FeverPeople, err error) {
 	return
 }
 
-//得到指定信息
-func GetMsgDetailByID(id int64) (fever *models.FeverPeople, err error) {
-	db.Table("fever_peoples").Where("fever_id = ?", id).Find(&fever)
-
-	return fever, err
-}
-
 //修改信息
 func UpdateMessage(id int64, fever *models.FeverPeople) (err error) {
 	db.Table("fever_peoples").Where("fever_id = ?", id).Updates(map[string]interface{}{

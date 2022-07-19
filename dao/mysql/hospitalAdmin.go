@@ -15,7 +15,7 @@ func AddHospital(up *models.UP, hospital *models.HospitalAdmin) (err error) {
 	// 生成加密密码
 	password := encryptPassword([]byte(up.Password))
 	db.Table("users").Create(map[string]interface{}{
-		"user_name": up.UserName, "password": password, "role": "药店管理者",
+		"user_name": up.UserName, "password": password, "role": "院长",
 	})
 	if err != nil {
 		zap.L().Error("add  hospitalAdmin failed", zap.Error(err))
@@ -50,15 +50,14 @@ func GetAllList(page, size int) (posts []*models.HospitalAdmin, err error) {
 
 //修改医院管理信息
 func UpdateDetailByCard(user_name string, hospitalAdmin *models.Hospital) (err error) {
-	db.Table("hospital_admins").Where("user_name = ?", user_name).Updates(map[string]interface{}{"district": hospitalAdmin.District,
-
+	db.Table("hospital_admins").Where("user_name = ?", user_name).Updates(map[string]interface{}{
+		"district": hospitalAdmin.District,
 		"hospital": hospitalAdmin.Hospital,
 		"credit":   hospitalAdmin.Credit,
 		"address":  hospitalAdmin.Address,
 		"head":     hospitalAdmin.Head,
-
-		"phone": hospitalAdmin.Phone,
-		"id":    hospitalAdmin.ID,
+		"phone":    hospitalAdmin.Phone,
+		"id":       hospitalAdmin.ID,
 	})
 	return err
 }

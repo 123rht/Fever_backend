@@ -18,8 +18,6 @@ func SetupRouter() *gin.Engine {
 	v1.GET("/Fare_all", controller.FareListHandler)
 	// 创新新的发热人员信息
 	v1.POST("/addFare", controller.AddMessage)
-	//查询信息
-	v1.GET("/updateFare/:feverId", controller.MsgDetail)
 	//修改信息
 	v1.POST("/updateFare/:feverId", controller.UpdateMessage)
 	//删除信息
@@ -30,14 +28,19 @@ func SetupRouter() *gin.Engine {
 	{
 		//修改密码
 		v1.POST("/change_password", controller.ChangePasswordHandler)
+		//加权限
+		v1.POST("/add_casbin", controller.AddCasbin)
+
 	}
 
 	//医生名单相关接口
 	v2 := r.Group("/doctor/v1")
 
 	//登录验证token
-	v2.Use(controller.JWTAuthMiddleware())
+	v2.Use(controller.JWTAuthMiddleware(), controller.AuthCheckRole())
 	{
+		//查看本医院所有的医生的名单
+		v2.GET("/information_myhos", controller.MyHosDoctorListHandler)
 		//查看所有医生的名单
 		v2.GET("/information_all", controller.DoctorListHandler)
 		//添加医生
@@ -56,6 +59,10 @@ func SetupRouter() *gin.Engine {
 	//登录验证token
 	v3.Use(controller.JWTAuthMiddleware())
 	{
+		//展示本区所有医院
+		v3.GET("/district_alldoc", controller.MyDistrictDocListHandler)
+		//展示本区所有医院
+		v3.GET("/district_allhos", controller.MyDistrictHosListHandler)
 		//查看所有区县的名单
 		v3.GET("/district_all", controller.DistrictListHandler)
 		//修改区县的信息

@@ -38,11 +38,6 @@ func GetFareList(page, size int) (data []*models.FeverPeople, err error) {
 	return
 }
 
-//获取信息详情
-func GetMsgDetail(id int64) (*models.FeverPeople, error) {
-	return mysql.GetMsgDetailByID(id)
-}
-
 //修改信息
 func UpdateMessage(id int64, fever *models.FeverPeople) error {
 	return mysql.UpdateMessage(id, fever)

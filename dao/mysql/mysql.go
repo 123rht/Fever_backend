@@ -4,6 +4,8 @@ import (
 	"Fever_backend/models"
 	"Fever_backend/settings"
 	"fmt"
+	"github.com/casbin/casbin/v2"
+	xormadapter "github.com/casbin/xorm-adapter/v2"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -12,6 +14,8 @@ var db *gorm.DB
 var user = models.Users{}
 var doctor = models.Doctor{}
 var county = models.County{}
+
+var e *casbin.Enforcer
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	//user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
@@ -37,4 +41,25 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	db.AutoMigrate(&county)
 
 	return
+}
+
+//持久化到数据库
+func Casbin() *casbin.Enforcer {
+	//casbin
+	// 使用 MySQL 数据库初始化一个 Xorm 适配器
+	a, err := xormadapter.NewAdapter("mysql", "root:123456@tcp(47.98.212.252:3306)/fever", true)
+	fmt.Println(err)
+	e, err := casbin.NewEnforcer("conf/rbac_models.conf", a)
+	fmt.Println(err)
+	//从DB加载策略
+	e.LoadPolicy()
+
+	return e
+}
+
+//添加权限
+func AdCasbin(cm models.CasbinModel) bool {
+	e := Casbin()
+	add, _ := e.AddPolicy(cm.RoleName, cm.Path, cm.Method)
+	return add
 }

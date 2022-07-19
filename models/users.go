@@ -5,6 +5,30 @@ import (
 	"errors"
 )
 
+//权限结构
+type CasbinModel struct {
+	RoleName string `json:"role" db:"v0"`
+	Path     string `json:"path" db:"v1"`
+	Method   string `json:"method" db:"v2"`
+}
+
+func (L *CasbinModel) UnmarshalJSON(data []byte) (err error) {
+	required := struct {
+		RoleName string `json:"role" db:"v0"`
+		Path     string `json:"path" db:"v1"`
+		Method   string `json:"method" db:"v2"`
+	}{}
+	err = json.Unmarshal(data, &required)
+	if err != nil {
+		return
+	} else {
+		L.RoleName = required.RoleName
+		L.Path = required.Path
+		L.Method = required.Method
+	}
+	return
+}
+
 type UP struct {
 	UserName string `json:"username" db:"username"` // 用户名
 	Password string `json:"password" db:"password"` // 密码

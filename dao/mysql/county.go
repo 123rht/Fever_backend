@@ -30,3 +30,22 @@ func GetDistrictList(page, size int) (con []*models.County, err error) {
 	db.Table("counties").Limit(size).Offset((page - 1) * size).Find(&con)
 	return
 }
+
+//MyDistrictHosList  展示本区所有医院
+
+func MyDistrictHosList(username string, page, size int) (hospitals []*models.HospitalAdmin, err error) {
+	var c models.County
+	db.Table("counties").Where("user_name = ?", username).Find(&c)
+	// 查看所有的文章  并分页
+	db.Table("hospital_admins").Where("district = ?", c.District).Limit(size).Offset((page - 1) * size).Find(&hospitals)
+	return
+}
+
+//MyDistrictDocList 展示本区所有医生
+func MyDistrictDocList(username string, page, size int) (doc []*models.Doctor, err error) {
+	var c models.County
+	db.Table("counties").Where("user_name = ?", username).Find(&c)
+	// 查看所有的文章  并分页
+	db.Table("doctors").Where("district = ?", c.District).Limit(size).Offset((page - 1) * size).Find(&doc)
+	return
+}

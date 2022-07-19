@@ -9,6 +9,7 @@ import (
 type County struct {
 	Card      int64     `json:"card" db:"card" gorm:"primaryKey"` // 编号
 	District  string    `json:"district" db:"district"`           // 区县名称
+	UserName  string    `json:"username" db:"username"`           // 用户名
 	UpdatedAt time.Time `db:"updated_at"`
 }
 
