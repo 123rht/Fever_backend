@@ -57,6 +57,16 @@ func SetupRouter() *gin.Engine {
 		v3.POST("/find_con_his", controller.FindCountyHandler)
 
 	}
+
+	v4 := r.Group("/hospital/v1")
+	v4.Use(controller.JWTAuthMiddleware())
+	{
+		v4.POST("/addHospitalHandler", controller.AddHospitalHandler)
+		v4.GET("/hospitalAdminAll", controller.DetailHandle)
+		v4.GET("/show", controller.ShowDoctorHandle)
+		v4.POST("/delete", controller.DeleteDetailHandle)
+		v4.POST("/hospitalAdmin", controller.UpdateDetailHandle)
+	}
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"msg": "404",
