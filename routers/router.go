@@ -77,10 +77,15 @@ func SetupRouter() *gin.Engine {
 	v4 := r.Group("/hospital/v1")
 	v4.Use(controller.JWTAuthMiddleware())
 	{
+		//增加院长信息
 		v4.POST("/addHospitalHandler", controller.AddHospitalHandler)
+		//获取所有院长信息
 		v4.GET("/hospitalAdminAll", controller.DetailHandle)
+		//点击人员按钮获取院长管理下的医生
 		v4.GET("/show", controller.ShowDoctorHandle)
+		//删除院长
 		v4.POST("/delete", controller.DeleteDetailHandle)
+		//修改院长信息
 		v4.POST("/hospitalAdmin", controller.UpdateDetailHandle)
 	}
 	r.NoRoute(func(c *gin.Context) {
