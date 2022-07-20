@@ -1,9 +1,12 @@
 package controller
 
 import (
+	"Fever_backend/dao/mysql"
 	"Fever_backend/pkg/jwt"
 	"errors"
 	"fmt"
+	"go.uber.org/zap"
+	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -47,5 +50,47 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		// 将当前请求的username信息保存到请求的上下文c上
 		c.Set(ContextUserNameKey, mc.UserName)
 		c.Next() // 后续的处理函数可以用过c.Get("userID")来获取当前请求的用户信息
+	}
+}
+
+/*
+   说明：Casbin 权限中间件
+*/
+//权限检查中间件
+func AuthCheckRole() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 获取作者Name，当前请求的UserName
+		userName, err := getCurrentUserName(c)
+		if err != nil {
+			zap.L().Error("GetCurrentUserName() failed", zap.Error(err))
+			ResponseError(c, CodeNotLogin)
+			return
+		}
+		fmt.Println(userName)
+		role, err := mysql.CheckRole(userName)
+		fmt.Println(role)
+		fmt.Println(c.Request.URL.Path)
+		fmt.Println(c.Request.Method)
+		e := mysql.Casbin()
+		//检查权限
+		res, err := e.Enforce(role, c.Request.URL.Path, c.Request.Method)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"status": -1,
+				"msg":    "错误消息" + err.Error(),
+			})
+			c.Abort()
+			return
+		}
+		if res {
+			c.Next()
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"status": 0,
+				"msg":    "很抱歉您没有此权限",
+			})
+			c.Abort()
+			return
+		}
 	}
 }

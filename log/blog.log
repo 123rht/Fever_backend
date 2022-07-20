@@ -79,22 +79,84 @@
 {"level":"INFO","time":"2022-07-18T22:27:39.382+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:03.468+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-18T22:30:38.118+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T09:51:29.331+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T09:53:21.725+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:01:51.961+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:09:01.386+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:15:11.234+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:17:03.788+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:18:59.495+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T10:57:54.809+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:02:13.893+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:04:51.039+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:07:28.828+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:09:53.932+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"ERROR","time":"2022-07-19T11:11:25.709+0800","caller":"logic/hospitalAdmin.go:12","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
-{"level":"ERROR","time":"2022-07-19T11:11:25.709+0800","caller":"controller/hospitalAdmin.go:25","msg":"logic.AddDoctor failed","error":"用户名已存在"}
-{"level":"INFO","time":"2022-07-19T11:12:22.803+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:13:46.330+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:14:25.596+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:16:11.972+0800","caller":"logger/logger.go:43","msg":"init logger success"}
-{"level":"INFO","time":"2022-07-19T11:18:12.840+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:47:23.893+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:49:32.601+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T10:54:03.639+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:30:34.557+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:35:53.849+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T11:47:24.889+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-19T11:50:40.825+0800","caller":"logic/FeverMsg.go:22","msg":"mysql.CreatePost(&post) failed","error":"此信息已存在"}
+{"level":"ERROR","time":"2022-07-19T11:53:56.284+0800","caller":"logic/FeverMsg.go:22","msg":"mysql.CreatePost(&post) failed","error":"此信息已存在"}
+{"level":"INFO","time":"2022-07-19T12:12:27.589+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T19:47:26.719+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T19:50:26.277+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:09:05.756+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:42:37.759+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:48:34.645+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:49:01.592+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:50:17.310+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:50:22.136+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:52:15.704+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:52:38.058+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:53:39.238+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:54:23.965+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:57:28.418+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:58:12.498+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T20:59:39.176+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-19T20:59:51.537+0800","caller":"controller/doctor.go:14","msg":"GetCurrentUserName() failed","error":"当前用户未登录"}
+{"level":"ERROR","time":"2022-07-19T21:00:40.387+0800","caller":"controller/doctor.go:14","msg":"GetCurrentUserName() failed","error":"当前用户未登录"}
+{"level":"INFO","time":"2022-07-19T21:01:01.363+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:03:07.113+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:03:49.243+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:06:21.815+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:08:39.871+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:10:17.763+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:10:48.029+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:11:06.689+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:13:31.648+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:15:38.076+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:22:55.271+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:28:06.359+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:29:59.393+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:35:57.453+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:39:15.478+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:44:52.279+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:53:38.190+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:54:01.853+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:54:20.679+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:54:33.984+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:56:17.815+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:57:32.693+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T21:58:38.793+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T22:01:46.567+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T22:05:21.301+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T22:07:41.493+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T22:09:26.850+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T22:11:33.649+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:27:26.156+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:29:39.453+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:36:32.943+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:36:54.838+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:37:46.299+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:38:21.987+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:39:39.623+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:55:58.492+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-19T23:58:27.702+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T00:08:02.526+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T00:09:50.506+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T00:16:39.300+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T00:18:36.649+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-20T00:28:49.301+0800","caller":"logic/hospitalAdmin.go:12","msg":"mysql.AddDoctor(doctor) failed","error":"用户名已存在"}
+{"level":"ERROR","time":"2022-07-20T00:28:49.301+0800","caller":"controller/hospitalAdmin.go:25","msg":"logic.AddDoctor failed","error":"用户名已存在"}
+{"level":"INFO","time":"2022-07-20T00:39:09.308+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"ERROR","time":"2022-07-20T01:08:18.927+0800","caller":"controller/casbin.go:15","msg":"invalid params","error":"invalid character 'â' looking for beginning of object key string"}
+{"level":"INFO","time":"2022-07-20T01:17:07.027+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:17:46.866+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:18:21.487+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:18:30.321+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:29:52.172+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:31:11.634+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:31:27.171+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:32:53.057+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:33:09.651+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T01:38:54.690+0800","caller":"logger/logger.go:43","msg":"init logger success"}

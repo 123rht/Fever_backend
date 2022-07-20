@@ -20,10 +20,6 @@ func UpdateDetail(user string, hospitalAdmin *models.Hospital) error {
 	return mysql.UpdateDetailByCard(user, hospitalAdmin)
 }
 
-/*func GetDetail(head string) (*models.HospitalAdmin, error) {
-	return mysql.GetDetailByHead(head)
-}*/
-
 func ShowDoctor(hospital string) ([]models.Doctor, error) {
 	return mysql.ShowDoctorByHospital(hospital)
 }

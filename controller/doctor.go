@@ -1,4 +1,4 @@
-package doctor
+package controller
 
 import (
 	"Fever_backend/logic"
@@ -6,6 +6,26 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
+
+//MyHosDoctorListHandler  查找本医院所有的医生
+func MyHosDoctorListHandler(c *gin.Context) {
+	userName, err := getCurrentUserName(c)
+	if err != nil {
+		zap.L().Error("GetCurrentUserName() failed", zap.Error(err))
+		ResponseError(c, CodeNotLogin)
+		return
+	}
+	page, size := getPageInfo(c)
+	//获取数据
+	data, err := logic.GetMyHosDoctorList(userName, page, size)
+	if err != nil {
+		zap.L().Error("Logic.GetMyHosDoctorList() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	//返回响应
+	ResponseSuccess(c, data)
+}
 
 //DoctorListHandler 获取医生名单的处理函数
 func DoctorListHandler(c *gin.Context) {
@@ -49,12 +69,13 @@ func AddDoctorHandler(c *gin.Context) {
 
 //ChangeDoctorHandler 修改医生信息
 func ChangeDoctorHandler(c *gin.Context) {
-	var doctor models.Doctor
+	userName := c.Query("username")
+	var doctor models.Doc
 	if err := c.ShouldBindJSON(&doctor); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	err := logic.ChangeDoctorDetail(&doctor)
+	err := logic.ChangeDoctorDetail(userName, &doctor)
 	if err != nil {
 		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)
@@ -85,12 +106,12 @@ func UpdateMyMessage(c *gin.Context) {
 		ResponseError(c, CodeNotLogin)
 		return
 	}
-	var doctor models.Doctor
-	if err := c.ShouldBindJSON(&doctor); err != nil {
+	var hospital models.HospitalAdmin
+	if err := c.ShouldBindJSON(&hospital); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	err = logic.UpdateMyMessage(userName, &doctor)
+	err = logic.UpdateMyMessage(userName, &hospital)
 	if err != nil {
 		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)

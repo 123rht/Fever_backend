@@ -48,3 +48,9 @@ func UpdatePasswordDetailByName(userName string, change_password *models.ChangeP
 
 	return err
 }
+
+func CheckRole(usernme string) (role string, err error) {
+	var use *models.Users
+	db.Table("users").Where("user_name = ?", usernme).Find(&use)
+	return use.Role, err
+}

@@ -2,7 +2,6 @@ package routers
 
 import (
 	"Fever_backend/controller"
-	"Fever_backend/controller/doctor"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -15,30 +14,43 @@ func SetupRouter() *gin.Engine {
 	})
 	//登录
 	v1.POST("/login", controller.LoginHandler)
+	//查看所有发热人员的名单
+	v1.GET("/Fare_all", controller.FareListHandler)
+	// 创新新的发热人员信息
+	v1.POST("/addFare", controller.AddMessage)
+	//修改信息
+	v1.POST("/updateFare/:feverId", controller.UpdateMessage)
+	//删除信息
+	v1.POST("/deleteFare/:feverId", controller.DeleteMessage)
 
 	//登录验证token
 	v1.Use(controller.JWTAuthMiddleware())
 	{
 		//修改密码
 		v1.POST("/change_password", controller.ChangePasswordHandler)
+		//加权限
+		v1.POST("/add_casbin", controller.AddCasbin)
+
 	}
 
 	//医生名单相关接口
 	v2 := r.Group("/doctor/v1")
 
 	//登录验证token
-	v2.Use(controller.JWTAuthMiddleware())
+	v2.Use(controller.JWTAuthMiddleware(), controller.AuthCheckRole())
 	{
+		//查看本医院所有的医生的名单
+		v2.GET("/information_myhos", controller.MyHosDoctorListHandler)
 		//查看所有医生的名单
-		v2.GET("/information_all", doctor.DoctorListHandler)
+		v2.GET("/information_all", controller.DoctorListHandler)
 		//添加医生
-		v2.POST("/add_doc", doctor.AddDoctorHandler)
+		v2.POST("/add_doc", controller.AddDoctorHandler)
 		//修改医生的信息
-		v2.POST("/change_doc", doctor.ChangeDoctorHandler)
+		v2.POST("/change_doc", controller.ChangeDoctorHandler)
 		//删除医生
-		v2.POST("/delete_doc", doctor.DeleteDoctorHandler)
+		v2.POST("/delete_doc", controller.DeleteDoctorHandler)
 		//修改当前医生管理员的信息
-		v2.POST("/update_myself", doctor.UpdateMyMessage)
+		v2.POST("/update_myself", controller.UpdateMyMessage)
 	}
 
 	//医生名单相关接口
@@ -47,6 +59,10 @@ func SetupRouter() *gin.Engine {
 	//登录验证token
 	v3.Use(controller.JWTAuthMiddleware())
 	{
+		//展示本区所有医院
+		v3.GET("/district_alldoc", controller.MyDistrictDocListHandler)
+		//展示本区所有医院
+		v3.GET("/district_allhos", controller.MyDistrictHosListHandler)
 		//查看所有区县的名单
 		v3.GET("/district_all", controller.DistrictListHandler)
 		//修改区县的信息
