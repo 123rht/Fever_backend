@@ -14,6 +14,7 @@ var db *gorm.DB
 var user = models.Users{}
 var doctor = models.Doctor{}
 var county = models.County{}
+var hospital = models.HospitalAdmin{}
 
 var e *casbin.Enforcer
 
@@ -39,6 +40,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	db.AutoMigrate(&user)
 	db.AutoMigrate(&doctor)
 	db.AutoMigrate(&county)
+	db.AutoMigrate(&hospital)
 
 	return
 }
