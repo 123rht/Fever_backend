@@ -6,26 +6,24 @@ import (
 	"go.uber.org/zap"
 )
 
-//GetMyHosDoctorList 获取本医院所有的医生
-func GetMyHosDoctorList(username string, page int, size int) (data []*models.Doctor, err error) {
-	doctors, err := mysql.GetMyHosDoctorList(username, page, size)
-	if err != nil {
-		zap.L().Error("mysql.GetMyHosDoctorList(username,page,size) failed", zap.Error(err))
-		return
-	}
-	data = doctors
-	return
-}
-
 //GetDoctorList  获取医生名单列表
 func GetDoctorList(username string, page int, size int) (data []*models.Doctor, err error) {
-	doctors, err := mysql.GetDoctorList(username, page, size)
-	if err != nil {
-		zap.L().Error("mysql.GetDoctorList(page,size) failed", zap.Error(err))
-		return
+	role, err := mysql.CheckRole(username)
+	var er error
+	if role == "超级管理员" {
+		doctors, err := mysql.GetDoctorList(page, size)
+		data = doctors
+		er = err
+	} else if role == "区县管理员" {
+		doctors, err := mysql.MyDistrictDocList(username, page, size)
+		data = doctors
+		er = err
+	} else if role == "院长" {
+		doctors, err := mysql.GetMyHosDoctorList(username, page, size)
+		data = doctors
+		er = err
 	}
-	data = doctors
-	return
+	return data, er
 }
 
 //AddDoctor  添加医生

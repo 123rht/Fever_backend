@@ -38,25 +38,3 @@ func GetDistrictList(page int, size int) (data []*models.County, err error) {
 	data = districts
 	return
 }
-
-//MyDistrictHosList 展示本区所有医院
-func MyDistrictHosList(username string, page int, size int) (data []*models.HospitalAdmin, err error) {
-	doctors, err := mysql.MyDistrictHosList(username, page, size)
-	if err != nil {
-		zap.L().Error("mysql.MyDistrictHosList(username,page,size) failed", zap.Error(err))
-		return
-	}
-	data = doctors
-	return
-}
-
-//MyDistrictDocList 展示本区所有医生
-func MyDistrictDocList(username string, page int, size int) (data []*models.Doctor, err error) {
-	doctors, err := mysql.MyDistrictDocList(username, page, size)
-	if err != nil {
-		zap.L().Error("mysql.MyDistrictDocList(username,page,size) failed", zap.Error(err))
-		return
-	}
-	data = doctors
-	return
-}

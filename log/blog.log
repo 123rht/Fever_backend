@@ -160,3 +160,10 @@
 {"level":"INFO","time":"2022-07-20T01:32:53.057+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-20T01:33:09.651+0800","caller":"logger/logger.go:43","msg":"init logger success"}
 {"level":"INFO","time":"2022-07-20T01:38:54.690+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T02:55:47.888+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-20T02:57:13.683+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-21T20:04:07.212+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-21T20:43:16.335+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-21T20:55:05.684+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-21T21:20:10.705+0800","caller":"logger/logger.go:43","msg":"init logger success"}
+{"level":"INFO","time":"2022-07-21T21:24:19.627+0800","caller":"logger/logger.go:43","msg":"init logger success"}

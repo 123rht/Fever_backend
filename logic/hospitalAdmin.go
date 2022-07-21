@@ -25,14 +25,19 @@ func ShowDoctor(hospital string) ([]models.Doctor, error) {
 }
 
 //分页
-func GetDetailList(page, size int) (data []*models.HospitalAdmin, err error) {
-	details, err := mysql.GetAllList(page, size)
-	if err != nil {
-		zap.L().Error("mysql.GetPostList(page,size) failed", zap.Error(err))
-		return
+func GetDetailList(username string, page, size int) (data []*models.HospitalAdmin, err error) {
+	role, err := mysql.CheckRole(username)
+	var er error
+	if role == "超级管理员" {
+		hos, err := mysql.GetAllList(page, size)
+		data = hos
+		er = err
+	} else if role == "区县管理员" {
+		hos, err := mysql.MyDistrictHosList(username, page, size)
+		data = hos
+		er = err
 	}
-	data = details
-	return
+	return data, er
 }
 
 //删除

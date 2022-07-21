@@ -39,10 +39,8 @@ func SetupRouter() *gin.Engine {
 	//登录验证token
 	v2.Use(controller.JWTAuthMiddleware(), controller.AuthCheckRole())
 	{
-		//查看本医院所有的医生的名单
-		v2.GET("/information_myhos", controller.MyHosDoctorListHandler)
 		//查看所有医生的名单
-		v2.GET("/information_all", controller.DoctorListHandler)
+		v2.GET("/information_all", controller.DoctorListHandler) //66666666666666666666666666666666666
 		//添加医生
 		v2.POST("/add_doc", controller.AddDoctorHandler)
 		//修改医生的信息
@@ -57,12 +55,8 @@ func SetupRouter() *gin.Engine {
 	v3 := r.Group("/county/v1")
 
 	//登录验证token
-	v3.Use(controller.JWTAuthMiddleware())
+	v3.Use(controller.JWTAuthMiddleware(), controller.AuthCheckRole())
 	{
-		//展示本区所有医院
-		v3.GET("/district_alldoc", controller.MyDistrictDocListHandler)
-		//展示本区所有医院
-		v3.GET("/district_allhos", controller.MyDistrictHosListHandler)
 		//查看所有区县的名单
 		v3.GET("/district_all", controller.DistrictListHandler)
 		//修改区县的信息
@@ -75,10 +69,10 @@ func SetupRouter() *gin.Engine {
 	}
 
 	v4 := r.Group("/hospital/v1")
-	v4.Use(controller.JWTAuthMiddleware())
+	v4.Use(controller.JWTAuthMiddleware(), controller.AuthCheckRole())
 	{
 		v4.POST("/addHospitalHandler", controller.AddHospitalHandler)
-		v4.GET("/hospitalAdminAll", controller.DetailHandle)
+		v4.GET("/hospitalAdminAll", controller.DetailHandle) //555555555555555555555555555555
 		v4.GET("/show", controller.ShowDoctorHandle)
 		v4.POST("/delete", controller.DeleteDetailHandle)
 		v4.POST("/hospitalAdmin", controller.UpdateDetailHandle)

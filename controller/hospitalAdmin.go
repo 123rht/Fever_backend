@@ -31,7 +31,14 @@ func AddHospitalHandler(c *gin.Context) {
 
 //获取所有医院管理
 func DetailHandle(c *gin.Context) {
-	data, err := logic.GetDetailList(getPageInfo(c))
+	userName, err := getCurrentUserName(c)
+	if err != nil {
+		zap.L().Error("GetCurrentUserName() failed", zap.Error(err))
+		ResponseError(c, CodeNotLogin)
+		return
+	}
+	page, size := getPageInfo(c)
+	data, err := logic.GetDetailList(userName, page, size)
 	if err != nil {
 		zap.L().Error("logic.GetBlogList() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)

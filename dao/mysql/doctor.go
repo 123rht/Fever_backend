@@ -16,7 +16,7 @@ func GetMyHosDoctorList(username string, page, size int) (doctors []*models.Doct
 }
 
 //查找所有的医生  并分页
-func GetDoctorList(username string, page, size int) (doctors []*models.Doctor, err error) {
+func GetDoctorList(page, size int) (doctors []*models.Doctor, err error) {
 	// 查看所有的文章  并分页
 	db.Table("doctors").Limit(size).Offset((page - 1) * size).Find(&doctors)
 	return

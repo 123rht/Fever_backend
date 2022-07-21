@@ -33,7 +33,7 @@ func main() {
 	}
 	//注册路由
 	r := routers.SetupRouter()
-	err := r.Run()
+	err := r.Run(":8085")
 	if err != nil {
 		fmt.Printf("run server failed,err:%v\n", err)
 		return
