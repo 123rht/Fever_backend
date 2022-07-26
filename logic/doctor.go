@@ -3,6 +3,7 @@ package logic
 import (
 	"Fever_backend/dao/mysql"
 	"Fever_backend/models"
+	"fmt"
 	"go.uber.org/zap"
 )
 
@@ -46,6 +47,14 @@ func DeleteDoctorDetail(username string) error {
 }
 
 //UpdateMyMessage 修改医生管理员的信息
-func UpdateMyMessage(username string, doctor *models.HospitalAdmin) error {
-	return mysql.UpdateMyMessageByUserName(username, doctor)
+func UpdateMyMessage(username string, doctor *models.Update_my) error {
+	role, err := mysql.CheckRole(username)
+	fmt.Println(err)
+	var a error
+	if role == "院长" {
+		a = mysql.UpdateMyYMessageByUserName(username, doctor)
+	} else if role == "医生" {
+		a = mysql.UpdateMyDMessageByUserName(username, doctor)
+	}
+	return a
 }

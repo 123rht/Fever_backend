@@ -18,12 +18,16 @@ func LoginHandler(c *gin.Context) {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
+	var my models.Update_my
 	//用户登录
-	if err := mysql.Login(&L); err != nil {
+	if err, a := mysql.Login(&L); err != nil {
 		zap.L().Error("mysql.Login(&u) failed", zap.Error(err))
 		ResponseError(c, CodeInvalidPassword)
 		return
+	} else {
+		my = a
 	}
+
 	// 生成Token
 	aToken, rToken, _ := jwt.GenToken(L.UserName)
 	ResponseSuccess(c, gin.H{
@@ -31,6 +35,9 @@ func LoginHandler(c *gin.Context) {
 		"refreshToken": rToken,
 		"username":     L.UserName,
 		"role":         L.Role,
+		"realname":     my.Realname,
+		"phone_number": my.PhoneNumber,
+		"id_number":    my.IDNumber,
 	})
 }
 

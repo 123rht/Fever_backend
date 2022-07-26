@@ -24,7 +24,6 @@ func AddHospital(up *models.UP, hospital *models.HospitalAdmin) (err error) {
 	}
 	// 把医生插入数据库
 	db.Table("hospital_admins").Create(map[string]interface{}{
-
 		"credit":    hospital.Credit,
 		"phone":     hospital.Phone,
 		"id":        hospital.ID,

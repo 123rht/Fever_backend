@@ -59,21 +59,31 @@ func ChangeDoctorDetailByUserName(userName string, doctor *models.Doc) (err erro
 
 //DeleteDoctorDetailByUserName 删除医生
 func DeleteDoctorDetailByUserName(username string) (err error) {
+	u := db.Table("doctors").Where("username = ?", doctor.Username).Find(doctor)
+	if u.RowsAffected != 1 {
+		return ErrorUserNotExit
+	}
 	db.Table("doctors").Where("username = ?", username).Delete(username)
 	db.Table("users").Where("user_name = ?", username).Delete(username)
 	return err
 }
 
 //UpdateMyMessageByUserName 修改医生管理员信息
-func UpdateMyMessageByUserName(username string, hospitalAdmin *models.HospitalAdmin) (err error) {
+func UpdateMyYMessageByUserName(username string, hospitalAdmin *models.Update_my) (err error) {
 	db.Table("hospital_admins").Where("user_name = ?", username).Updates(map[string]interface{}{
-		"district": hospitalAdmin.District,
-		"hospital": hospitalAdmin.Hospital,
-		"credit":   hospitalAdmin.Credit,
-		"address":  hospitalAdmin.Address,
-		"head":     hospitalAdmin.Head,
-		"phone":    hospitalAdmin.Phone,
-		"id":       hospitalAdmin.ID,
+		"head":  hospitalAdmin.Realname,
+		"phone": hospitalAdmin.PhoneNumber,
+		"id":    hospitalAdmin.IDNumber,
+	})
+	return err
+}
+
+//UpdateMyMessageByUserName 修改医生个人信息
+func UpdateMyDMessageByUserName(username string, hospitalAdmin *models.Update_my) (err error) {
+	db.Table("doctors").Where("username = ?", username).Updates(map[string]interface{}{
+		"realname":     hospitalAdmin.Realname,
+		"phone_number": hospitalAdmin.PhoneNumber,
+		"id_number":    hospitalAdmin.IDNumber,
 	})
 	return err
 }

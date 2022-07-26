@@ -71,7 +71,7 @@ func DeleteDoctorHandler(c *gin.Context) {
 	err := logic.DeleteDoctorDetail(userName)
 	if err != nil {
 		zap.L().Error("mysql.DeleteDoctorDetail() failed", zap.Error(err))
-		ResponseError(c, CodeServerBusy)
+		ResponseError(c, CodeUserNotExist)
 		return
 	}
 	ResponseSuccess(c, nil)
@@ -86,14 +86,14 @@ func UpdateMyMessage(c *gin.Context) {
 		ResponseError(c, CodeNotLogin)
 		return
 	}
-	var hospital models.HospitalAdmin
-	if err := c.ShouldBindJSON(&hospital); err != nil {
+	var my models.Update_my
+	if err := c.ShouldBindJSON(&my); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	err = logic.UpdateMyMessage(userName, &hospital)
+	err = logic.UpdateMyMessage(userName, &my)
 	if err != nil {
-		zap.L().Error("mysql.ChangeDoctorDetail() failed", zap.Error(err))
+		zap.L().Error("mysql.UpdateMyMessage() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)
 		return
 	}

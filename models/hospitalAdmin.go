@@ -31,6 +31,40 @@ type Hospital struct {
 	Address  string `json:"address" db:"address"`
 }
 
+type Update_my struct {
+	IDNumber    string `json:"id_number" db:"id_number"`       // 身份证号
+	PhoneNumber string `json:"phone_number" db:"phone_number"` // 电话号码
+	Realname    string `json:"realname" db:"realname"`         // 真实姓名
+}
+type Update_my2 struct {
+	Head  string `json:"head" db:"head"`
+	Phone string `json:"phone" db:"phone"`
+	ID    string `json:"ID" db:"ID"`
+}
+
+func (d *Update_my) UnmarshalJSON(data []byte) (err error) {
+	required := struct {
+		IDNumber    string `json:"id_number" db:"id_number"`       // 身份证号
+		PhoneNumber string `json:"phone_number" db:"phone_number"` // 电话号码
+		Realname    string `json:"realname" db:"realname"`         // 真实姓名
+	}{}
+	err = json.Unmarshal(data, &required)
+	if err != nil {
+		return
+	} else if len(required.IDNumber) != 18 {
+		err = errors.New("身份证号格式错误")
+	} else if len(required.PhoneNumber) != 11 {
+		err = errors.New("手机号格式错误")
+	} else if len(required.Realname) == 0 {
+		err = errors.New("真是姓名不能为空")
+	} else {
+		d.IDNumber = required.IDNumber
+		d.PhoneNumber = required.PhoneNumber
+		d.Realname = required.Realname
+	}
+	return
+}
+
 func (c *HospitalAdmin) UnmarshallJSON(data []byte) (err error) {
 	required := struct {
 		District string `json:"district" db:"district"`
@@ -38,9 +72,8 @@ func (c *HospitalAdmin) UnmarshallJSON(data []byte) (err error) {
 		Credit   string `json:"credit" db:"credit"`
 		Address  string `json:"address" db:"address"`
 		Head     string `json:"head" db:"hesd"`
-
-		Phone string `json:"phone" db:"phone"`
-		ID    string `json:"ID" db:"ID"`
+		Phone    string `json:"phone" db:"phone"`
+		ID       string `json:"ID" db:"ID"`
 	}{}
 	err = json.Unmarshal(data, &required)
 	if err != nil {
