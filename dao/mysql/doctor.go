@@ -59,8 +59,9 @@ func ChangeDoctorDetailByUserName(userName string, doctor *models.Doc) (err erro
 
 //DeleteDoctorDetailByUserName 删除医生
 func DeleteDoctorDetailByUserName(username string) (err error) {
-	u := db.Table("doctors").Where("username = ?", doctor.Username).Find(doctor)
-	if u.RowsAffected != 1 {
+	var doctor *models.Doctor
+	u := db.Table("doctors").Where("username = ?", username).Find(&doctor)
+	if u.RowsAffected == 0 {
 		return ErrorUserNotExit
 	}
 	db.Table("doctors").Where("username = ?", username).Delete(username)
